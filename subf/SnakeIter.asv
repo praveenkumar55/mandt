@@ -85,15 +85,9 @@ title(['Iter = ' num2str(NoSnakeIterations)])
 pause(0.1);
 hold off;
 
-
-
-imdisp(-Image1); title('Original image');
+imdisp(Image1); title('Original image');
 
 %%%%% result
-% by jimmy
-sizeXS = size(XS)
-sizeYS = size(YS)
-
 set(HDmainf,'CurrentAxes',HDorigPic);
 hold on
 HDline1=plot(XS,YS,'red');

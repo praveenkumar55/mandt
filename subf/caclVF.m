@@ -75,8 +75,8 @@ set(HDvectorFPic,'Units', 'pixels','Position',[adgeD adgeD xsize ysize],...
                   'Units', 'pixels');
                
 %%%%% result
-XS=[XSnake; XSnake(1)];
-YS=[YSnake; YSnake(1)];
+XS = [XSnake; XSnake(1)];
+YS = [YSnake; YSnake(1)];
 
 % by jimmy
 
