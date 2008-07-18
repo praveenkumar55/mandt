@@ -59,42 +59,35 @@ XS=[x; x(1)];
 YS=[y; y(1)];
 HD=line(XS,YS);
 for i=1:ceil(NoSnakeIterations/5),
-   if i<=floor(NoSnakeIterations/5) 
-      [x,y] = snakedeform(x,y,alpha,beta,gamma,kappa,px,py,5);
-      title(['Iter = ', num2str(i*5)])
-   else 
-      [x,y] = snakedeform(x,y,alpha,beta,gamma,kappa,px,py,NoSnakeIterations-floor(NoSnakeIterations/5)*5);
-      title(['Iter = ', num2str(NoSnakeIterations)])
-   end;
-   [x,y] = snakeinterp(x,y,dmax,dmin);
-   XS=[x; x(1)];
-   YS=[y; y(1)];
-   
-   set(HD,'Color','Red','Marker','None');
-   HD=line(XS,YS);
-%    if (SnakeDotsON==1) % draw dots if it is chosen
-%    	set(HD,'Color','Red','Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
-% 	else
-%   	 set(HD,'Color','Red','Marker','None');
-% 	end;
-   
-   pause(0.1);
+    if i<=floor(NoSnakeIterations/5)
+        [x,y] = snakedeform(x,y,alpha,beta,gamma,kappa,px,py,5);
+        title(['Iter = ', num2str(i*5)])
+    else
+        [x,y] = snakedeform(x,y,alpha,beta,gamma,kappa,px,py,NoSnakeIterations-floor(NoSnakeIterations/5)*5);
+        title(['Iter = ', num2str(NoSnakeIterations)])
+    end;
+    [x,y] = snakeinterp(x,y,dmax,dmin);
+    XS=[x; x(1)];
+    YS=[y; y(1)];
+
+    set(HD,'Color','Red','Marker','None');
+    HD=line(XS,YS);
+    if (SnakeDotsON==1) % draw dots if it is chosen
+        set(HD,'Color','Red','Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
+    else
+        set(HD,'Color','Red','Marker','None');
+    end;
+
+    pause(0.1);
 end
 XSnake=x; YSnake=y;
 title(['Iter = ' num2str(NoSnakeIterations)])
 pause(0.1);
 hold off;
 
-%by jimmy
-sizeImage1 = size(Image1)
-
 imdisp(Image1); title('Original image');
 
 %%%%% result
-% by jimmy
-sizeXS = size(XS)
-sizeYS = size(YS)
-
 set(HDmainf,'CurrentAxes',HDorigPic);
 hold on
 HDline1=plot(XS,YS,'red');
