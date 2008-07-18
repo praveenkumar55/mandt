@@ -240,7 +240,7 @@ SnakeFileName=strcat(n,'.mat');
 
 I=double(I);
 maxvalue=max(max(I)');
-f = 1 - I/maxvalue; 
+f = I/maxvalue; 
 Image1=f;
 
 %scalin picture, if it is to small to plot it on the scren
@@ -282,7 +282,7 @@ end;
 % plot the original picture
 % HDorigPic=subplot(221); imdisp(-f); title('Original image');
 % HDorigPic=subplot(221); imshow(uint8(I)); title('Original image');
-HDorigPic=subplot(221); imdisp(I); title('Original image');
+HDorigPic=subplot(221); imdisp(f); title('Original image');
 
 set(HDorigPic,'Units', 'pixels','Position',[adgeD adgeD*2+ysize xsize ysize],'Units', 'normal');
 
