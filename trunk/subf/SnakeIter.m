@@ -98,10 +98,19 @@ hold on
 HDline2=plot(XS,YS,'red');
 hold off;
 
+%by jimmy
+
+fpos = get(HDvectorFPic, 'Position');
+% fprintf('Position: x = %d, y = %d, area: %d * %d', uint8(fpos(1)), uint8(fpos(2)), fpos(3), fpos(4));
+% [picSizey picSizex] = size(Image2)
+set(HDvectorFPic, 'Position', [fpos(1:2), fposnew(3:4)]);
+
 set(HDmainf,'CurrentAxes',HDvectorFPic);
 hold on
 HDline3=plot(XS,YS,'red');
 hold off;
+
+pause
 
 %%%% define if butt click on picture
 HD=get(HDorigPic,'Children');

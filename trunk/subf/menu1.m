@@ -51,6 +51,7 @@ end;
 global BluredPic;
 BluredPic=1;
 set(HDbluredPic,'Visible','Off');
+set(HDmainf,'Visible','On');
 set(HDmainf,'CurrentAxes',HDbluredPic);
 title('');
 cla;
@@ -243,6 +244,8 @@ maxvalue=max(max(I)');
 f = I/maxvalue; 
 Image1=f;
 
+[xsize ysize]=size(I);
+
 %scalin picture, if it is to small to plot it on the scren
 % [m n]=min([xsize ysize])
 % if (m<MinSize) 
@@ -262,9 +265,9 @@ if (m<MinSize)
 end
 
 deltay=ysize*2+3*adgeD-fpos(4);
-% set(HDmainf,'Position',[fpos(1),fpos(2)-deltay,xsize*2+5+3*adgeD+MenuSizeX*3,ysize*2+3*adgeD],...
-%    			'Units', 'normal');
-set(HDmainf, 'Position', [fpos(1), 250, 600, 500]);
+set(HDmainf,'Position',[fpos(1),fpos(2)-deltay,xsize*2+5+3*adgeD+MenuSizeX*3,ysize*2+3*adgeD],...
+   			'Units', 'normal');
+% set(HDmainf, 'Position', [fpos(1), 250, 600, 500], 'Units', 'normal');
          
 % chech if image is gary level or binary 
 global GradientOn;					% 1 if gradient is applayed with blur
