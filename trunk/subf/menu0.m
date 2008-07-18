@@ -106,7 +106,7 @@ delete(HDButton1);
 
 FileName='mask.bmp';
 PathName='.\images\';
-menu1('OpenImageFile');
+menu1('OpenImageFile'); 
 
             %define inc position for HDvectorFPic
 HDbluredPic=subplot(222);
