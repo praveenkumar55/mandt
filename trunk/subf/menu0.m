@@ -113,7 +113,8 @@ HDbluredPic=subplot(222);
 set(HDbluredPic,'Units', 'pixels','Position',[adgeD*2+xsize adgeD*2+ysize xsize ysize],'Visible','Off');
 HDvectorFPic=subplot(223);
 set(HDvectorFPic,'Units', 'pixels','Position',[adgeD adgeD xsize ysize],'Visible','Off');
-
+HDhelpAxes=subplot(224);
+set(HDhelpAxes,'Units', 'pixels','Position',[adgeD*2+xsize adgeD xsize ysize],'Visible','Off');
 
 
 %====================================================
