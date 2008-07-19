@@ -58,7 +58,18 @@ if SchangeInFieldType==1
  qx=interp2(px,xSpace, ySpace')
  qy=interp2(py,xSpace, ySpace')
  
- quiver(xSpace,ySpace,qx,qy); axis('ij');
+%  quiver(xSpace,ySpace,qx,qy);
+%  axis('ij');
+% if VectorFieldButt(1)==1
+%    title('Standard potencial field');
+% else
+% %    s=strcat('GVF   (mu=',num2str(mu),'  iterations=',num2str(NoGVFIterations),')');
+%    title('GVF');
+% end
+
+HDvectorFPic=subplot(223);
+ quiver(xSpace,ySpace,qx,qy);
+ axis('ij');
 if VectorFieldButt(1)==1
    title('Standard potencial field');
 else
@@ -66,10 +77,10 @@ else
    title('GVF');
 end
 
-set(HDvectorFPic,'Units', 'pixels','Position',[adgeD adgeD xsize ysize],...
+set(HDvectorFPic,'Units', 'pixels','Position',[adgeD adgeD ysize/3 xsize/3],...
    					'Units', 'normal',...
-                  'XLim',[0 size(Image2,1)],...
-                  'YLim',[0 size(Image2,2)],...
+                  'XLim',[0 size(Image2,2)],...
+                  'YLim',[0 size(Image2,1)],...
                   'XTickMode','manual','XTick',[],...
                   'YTickMode','manual','YTick',[],...
                   'Units', 'pixels');

@@ -265,9 +265,11 @@ if (m<MinSize)
 end
 
 deltay=ysize*2+3*adgeD-fpos(4);
-set(HDmainf,'Position',[fpos(1),fpos(2)-deltay,xsize*2+5+3*adgeD+MenuSizeX*3,ysize*2+3*adgeD],...
+% set(HDmainf,'Position',[fpos(1),fpos(2)-deltay,xsize*2+5+3*adgeD+MenuSizeX*3,ysize*2+3*adgeD],...
+%    			'Units', 'normal');
+% set(HDmainf, 'Position', [100, 100, 800, 500], 'Units', 'normal');
+set(HDmainf,'Position',[0,fpos(2)-deltay,xsize*2+5+3*adgeD+MenuSizeX*3,ysize*2+3*adgeD],...
    			'Units', 'normal');
-% set(HDmainf, 'Position', [fpos(1), 250, 600, 500], 'Units', 'normal');
          
 % chech if image is gary level or binary 
 global GradientOn;					% 1 if gradient is applayed with blur
