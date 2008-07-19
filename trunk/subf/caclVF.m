@@ -53,8 +53,8 @@ if SchangeInFieldType==1
  %HDvectorFPic=subplot(223); 
  global HDmainf;
  set(HDmainf,'CurrentAxes',HDvectorFPic);
- xSpace=(1:10:size(Image2,2))
- ySpace=(1:10:size(Image2,1))
+ xSpace=(1:3:size(Image2,2))
+ ySpace=(1:3:size(Image2,1))
  qx=interp2(px,xSpace, ySpace')
  qy=interp2(py,xSpace, ySpace')
  
@@ -88,8 +88,6 @@ set(HDvectorFPic,'Units', 'pixels','Position',[adgeD adgeD ysize/3 xsize/3],...
 %%%%% result
 XS = [XSnake; XSnake(1)];
 YS = [YSnake; YSnake(1)];
-
-% by jimmy
 
 HDline1=line('Parent', HDorigPic,'XData',XS,'YData',YS,'Color','Red');
 HDline2=line('Parent', HDbluredPic,'XData',XS,'YData',YS,'Color','Red');

@@ -29,43 +29,43 @@ f = BoundMirrorExpand(f);  % Take care of boundary condition
 
 % by jimmy
 % mask.bmp : 128*128
-mask = imread('mask.bmp');
-mask = double(mask);
-sizeMask = size(mask)
-sizeImage = size(f)
-if (sizeMask(1) == sizeImage(1)) && (sizeMask(2) == sizeImage(2))
-    if yz == 0
-        for i=1:sizeMask(1)
-            for j = 1:sizeMask(2)
-                fx(i, j) = mask(i, j) * fx(i, j);
-                fy(i, j) = mask(i, j) * fy(i, j);
-            end
-        end
-        fx = fx/max(max(fx));
-        fy = fy/max(max(fy));
-    else
-        for i=1:sizeMask(1)
-            for j = 1:sizeMask(2)
-                if mask(i,j) > yz
-                    fy(i, j) = fy(i, j);
-                else
-                    fy(i, j) = mask(i, j) * fy(i, j);
-                end
-            end
-        end
-        fx = fx/max(max(fx));
-        fy = fy/max(max(fy));
-    end
-else
-    disp('size miss match!');
-end
+% mask = imread('mask.bmp');
+% mask = double(mask);
+% sizeMask = size(mask)
+% sizeImage = size(f)
+% if (sizeMask(1) == sizeImage(1)) && (sizeMask(2) == sizeImage(2))
+%     if yz == 0
+%         for i=1:sizeMask(1)
+%             for j = 1:sizeMask(2)
+%                 fx(i, j) = mask(i, j) * fx(i, j);
+%                 fy(i, j) = mask(i, j) * fy(i, j);
+%             end
+%         end
+%         fx = fx/max(max(fx));
+%         fy = fy/max(max(fy));
+%     else
+%         for i=1:sizeMask(1)
+%             for j = 1:sizeMask(2)
+%                 if mask(i,j) > yz
+%                     fy(i, j) = fy(i, j);
+%                 else
+%                     fy(i, j) = mask(i, j) * fy(i, j);
+%                 end
+%             end
+%         end
+%         fx = fx/max(max(fx));
+%         fy = fy/max(max(fy));
+%     end
+% else
+%     disp('size miss match!');
+% end
 
 u = fx; v = fy;            % Initialize GVF to the gradient
 SqrMagf = fx.*fx + fy.*fy; % Squared magnitude of the gradient field
 
 % imdisp(SqrMagf);
 % by jimmy
-imshow(SqrMagf);
+% imshow(SqrMagf);
 
 % Iteratively solve for the GVF u,v
 for i=1:ITER
