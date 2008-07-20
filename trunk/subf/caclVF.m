@@ -19,61 +19,46 @@ global xsize ysize;					%size of the picture
 global adgeD;
 
 %%%%% global handles
+global HDmainf;
 global HDorigPic;						%original picture axes handle
 global HDbluredPic;				   %blured picture axes handle
 global HDvectorFPic;					%handle of vector field picture
 
-global HDvectorFPic;
 global HDSnakeLine;					%vector of Handles of Snake lines on the picture
 global SnakeON;						%indicate if snake is visible
-global SnakeDotsON;				      % 1 if snake dots should be displeyed
-global DotsSize;						% size in pixels of the dots on the snake
-
-
 
 if SchangeInFieldType==1
-	if VectorFieldButt(1)==1
-   	% Compute standard vector filed of Image2
-   	[u,v] = gradient2(Image2);
-	else
-   	 % Compute the GVF of the edge Image2
+    fmin  = min(Image2(:));
+    fmax  = max(Image2(:));
+    f = (Image2-fmin)/(fmax-fmin);  % Normalize f to the range [0,1]
+    f = addMask(f);
+    set(HDmainf,'CurrentAxes',HDbluredPic); imdisp(f); title('Blured image');
+    f = BoundMirrorExpand(f);  % Take care of boundary condition
+    [u,v] = gradient(f);     % Calculate the gradient of the edge map
+	if VectorFieldButt(1) ~= 1
+    % Compute the GVF of the edge Image2
     	disp(' Compute GVF ...');
-    	[u,v] = GVF(Image2, mu, NoGVFIterations);
+    	[u,v] = GVF(u, v, mu, NoGVFIterations);
    end
    SchangeInFieldType=0;
  end
  
- if VectorFieldButt(3)==1
-  	mag = sqrt(u.*u+v.*v);
-   px = u./(mag+1e-10); py = v./(mag+1e-10); 
- else
-   	px=u; py=v;
- end
+ mag = sqrt(u.*u+v.*v);
+ px = u./(mag+1e-10); py = v./(mag+1e-10); 
  
  %HDvectorFPic=subplot(223); 
  global HDmainf;
  set(HDmainf,'CurrentAxes',HDvectorFPic);
- xSpace=(1:3:size(Image2,2))
- ySpace=(1:3:size(Image2,1))
- qx=interp2(px,xSpace, ySpace')
- qy=interp2(py,xSpace, ySpace')
+ xSpace=(1:3:size(Image2,2));
+ ySpace=(1:3:size(Image2,1));
+ qx=interp2(px,xSpace, ySpace');
+ qy=interp2(py,xSpace, ySpace');
  
-%  quiver(xSpace,ySpace,qx,qy);
-%  axis('ij');
-% if VectorFieldButt(1)==1
-%    title('Standard potencial field');
-% else
-% %    s=strcat('GVF   (mu=',num2str(mu),'  iterations=',num2str(NoGVFIterations),')');
-%    title('GVF');
-% end
-
-HDvectorFPic=subplot(223);
  quiver(xSpace,ySpace,qx,qy);
  axis('ij');
 if VectorFieldButt(1)==1
    title('Standard potencial field');
 else
-%    s=strcat('GVF   (mu=',num2str(mu),'  iterations=',num2str(NoGVFIterations),')');
    title('GVF');
 end
 
@@ -89,9 +74,9 @@ set(HDvectorFPic,'Units', 'pixels','Position',[adgeD adgeD ysize/3 xsize/3],...
 XS = [XSnake; XSnake(1)];
 YS = [YSnake; YSnake(1)];
 
-HDline1=line('Parent', HDorigPic,'XData',XS,'YData',YS,'Color','Red');
-HDline2=line('Parent', HDbluredPic,'XData',XS,'YData',YS,'Color','Red');
-HDline3=line('Parent', HDvectorFPic,'XData',XS,'YData',YS,'Color','Red');
+HDline1=line('Parent', HDorigPic,'XData',XS,'YData',YS,'Color','Red','LineWidth',3);
+HDline2=line('Parent', HDbluredPic,'XData',XS,'YData',YS,'Color','Red','LineWidth',3);
+HDline3=line('Parent', HDvectorFPic,'XData',XS,'YData',YS,'Color','Red','LineWidth',3);
 
 HDSnakeLine=[HDline1 HDline2 HDline3];
 SnakeON=1;

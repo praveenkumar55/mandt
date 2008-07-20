@@ -72,11 +72,12 @@ for i=1:ceil(NoSnakeIterations/5),
 
     set(HD,'Color','Red','Marker','None');
     HD=line(XS,YS);
-    if (SnakeDotsON==1) % draw dots if it is chosen
-        set(HD,'Color','Red','Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
-    else
-        set(HD,'Color','Red','Marker','None');
-    end;
+%     if (SnakeDotsON==1) % draw dots if it is chosen
+%         set(HD,'Color','Red','Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
+%     else
+%         set(HD,'Color','Red','Marker','None');
+%     end;
+    set(HD,'Color','Red','Marker','None');
 
     pause(0.1);
 end
@@ -90,12 +91,12 @@ imdisp(Image1); title('Original image');
 %%%%% result
 set(HDmainf,'CurrentAxes',HDorigPic);
 hold on
-HDline1=plot(XS,YS,'red');
+HDline1=plot(XS,YS,'red','LineWidth',3);
 hold off;
 
 set(HDmainf,'CurrentAxes',HDbluredPic);
 hold on
-HDline2=plot(XS,YS,'red');
+HDline2=plot(XS,YS,'red','LineWidth',3);
 hold off;
 
 %by jimmy
@@ -107,7 +108,7 @@ hold off;
 % set(HDvectorFPic, 'Position', [fpos(1)+fpos(3), fpos(2), fpos(3), fpos(4)]);
 set(HDmainf,'CurrentAxes',HDvectorFPic);
 hold on
-HDline3=plot(XS,YS,'red');
+HDline3=plot(XS,YS,'red','LineWidth',3);
 hold off;
 
 %%%% define if butt click on picture
@@ -131,11 +132,13 @@ HDSnakeLine=[HDline1 HDline2 HDline3];
 SnakeON=1;
 
 	% draw dots if it is chosen
-if SnakeDotsON==1 
-   set(HDSnakeLine,'Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
-else
-   set(HDSnakeLine,'Marker','None');
-end;
+% if SnakeDotsON==1 
+%    set(HDSnakeLine,'Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
+% else
+%    set(HDSnakeLine,'Marker','None');
+% end;
+
+set(HDSnakeLine,'Marker','None');
 
 
 set(HDSnakeLine,'XData',XS,'YData',YS);
