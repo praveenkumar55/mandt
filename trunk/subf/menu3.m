@@ -20,7 +20,7 @@ global NoSnakeIterations;		   % number of Snake iterations
 global VectorFieldButt;				
 global alpha beta gamma kappa dmin dmax;		% parameters for the snake
 global px py;											% forse filed
-global IncSnakeRadius;								% inicializaton snake radius
+% global IncSnakeRadius;								% inicializaton snake radius
 global XSnake YSnake;				% conture of the snake
 
 %%%% interface variables
@@ -31,17 +31,17 @@ global HDbluredPic;				   %blured picture axes handle
 global HDvectorFPic;					%handle of vector field picture
 global HDedit1 HDedit2 HDedit3 HDedit4 HDedit5 HDedit6 HDedit7; % handels of snake edit uicontrol
 global HDSnakeLine;					%vector of Handles of Snake lines on the picture
-global HDedit8 HDedit9 HDRadioButton1 HDRadioButton2;
+% global HDedit8 HDedit9 HDRadioButton1 HDRadioButton2;
 global HDButton1 HDButton2 HDButton4;
 global SnakeON;						%indicate if snake is visible
 global CircleOn;						% inicalization snake will be circle
-global SnakeDotsON;				      % 1 if snake dots should be displeyed
+% global SnakeDotsON;				      % 1 if snake dots should be displeyed
 
 global xsize ysize;					%size of the picture
 
 global adgeD MinSize MenuSizeX MenuSizeY MenuPosX MenuPosY;
 global ButtHeight ButtWidth ButtDist TextHeight;
-global DotsSize;						% size in pixels of the dots on the snake
+% global DotsSize;						% size in pixels of the dots on the snake
 
 
    
@@ -486,7 +486,8 @@ return
 % initalize the sanke to the circle
 
 function InicSnake();
-global XSnake YSnake IncSnakeRadius Image1 HDSnakeLine;
+% global XSnake YSnake IncSnakeRadius Image1 HDSnakeLine;
+global XSnake YSnake HDSnakeLine;
 global XSnakeInc YSnakeInc;   	% incicialization conture of the snake
 global CircleOn;
 
@@ -494,7 +495,7 @@ if CircleOn==1
 %     t = 0:0.05:6.28;
 %     XSnake = (size(Image1,2)/2 +  IncSnakeRadius/2*size(Image1,2)*cos(t))';
 %     YSnake = (size(Image1,1)/2 +  IncSnakeRadius/2*size(Image1,1)*sin(t))';
-    load('mask.mat');
+    load('snake.mat');
 else
     XSnake=[XSnakeInc; XSnakeInc(1)];
     YSnake=[YSnakeInc; YSnakeInc(1)];
@@ -726,9 +727,9 @@ global SnakeFileName SnakePathName;  % name of the snake parameters file
 global alpha beta gamma kappa dmin dmax;		% parameters for the snake
 global XSnake YSnake;								% conture of the snake
 global NoSnakeIterations;		   % number of Snake iterations
-global SnakeDotsON;				   % 1 if snake dots should be displeyed
-global IncSnakeRadius;				% inicializaton snake radius
-global DotsSize;						
+% global SnakeDotsON;				   % 1 if snake dots should be displeyed
+% global IncSnakeRadius;				% inicializaton snake radius
+% global DotsSize;						
 
 
 
@@ -750,13 +751,15 @@ global SnakeFileName SnakePathName;  % name of the snake parameters file
 global alpha beta gamma kappa dmin dmax;		% parameters for the snake
 global XSnake YSnake;								% conture of the snake
 global NoSnakeIterations;		   % number of Snake iterations
-global SnakeDotsON;				   % 1 if snake dots should be displeyed
-global IncSnakeRadius;				% inicializaton snake radius
+% global SnakeDotsON;				   % 1 if snake dots should be displeyed
+% global IncSnakeRadius;				% inicializaton snake radius
 global XSnakeInc YSnakeInc;   	% incicialization conture of the snake
-global DotsSize;
-global HDedit1 HDedit2 HDedit3 HDedit4 HDedit5 HDedit6 HDedit7 HDedit8 HDedit9 ; % handels of snake edit uicontrol
+% global DotsSize;
+% global HDedit1 HDedit2 HDedit3 HDedit4 HDedit5 HDedit6 HDedit7 HDedit8 HDedit9 ; % handels of snake edit uicontrol
+global HDedit1 HDedit2 HDedit3 HDedit4 HDedit5 HDedit6 HDedit7 HDedit8; % handels of snake edit uicontrol
 global CircleOn;						% inicalization snake will be circle
-global HDRadioButton1 HDRadioButton2;
+global HDSnakeLine;
+% global HDRadioButton1 HDRadioButton2;
 
 if size(snakePath) == [0 0]
     [FileNameT PathNameT]=uigetfile(strcat(SnakePathName,'\*.mat'),'Load snake parameters');
@@ -777,7 +780,6 @@ if FileNameT~=0
     XSnakeInc=XSnake;
     YSnakeInc=YSnake;
 
-    global HDSnakeLine;
     set(HDSnakeLine,'XData',[XSnake; XSnake(1)],'YData',[YSnake; YSnake(1)]);
     %       if SnakeDotsON==1
     % 		   set(HDSnakeLine,'Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);

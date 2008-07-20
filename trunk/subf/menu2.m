@@ -6,6 +6,7 @@ function menu2()
 %%%% image processing variables
 global Image1;							% original image
 global Image2;							% blured image
+global direI;                           % direction of the image
 
 global sigma;
 global mu;
@@ -237,17 +238,19 @@ pause(0.1);
 
 %%%% blured and draw the picture
 
-if sigma~=0 
-   f = gaussianBlur(Image1,sigma);
-else
-   f = Image1;
-end;
+% if sigma~=0 
+%    f = gaussianBlur(Image1,sigma);
+% else
+%    f = Image1;
+% end;
+% 
+% if GradientOn 
+% 	Image2 = abs(gradient2(f));
+% else 
+%    Image2 = f;
+% end;
 
-if GradientOn 
-	Image2 = abs(gradient2(f));
-else 
-   Image2 = f;
-end;
+[Image2 direI] = blurAgrad(Image1, sigma);
 
 %Image2 = Image2/max(max(Image2)); % scale the edge map to [0,1]
 
