@@ -339,86 +339,86 @@ HDButton4=uicontrol('Parent', HDmainf, ...
    'String',labelStr, ...
    'Enable','on', ...
    'Callback','menu3(''InicSnake'')');
-
-% UICONTROL for Radius of snake
-ButtWidth=MenuSizeX-2*ButtDist;
-ButtPosY = ButtPosY-ButtDist-ButtHeight;
-labelPos=[ButtPosX ButtPosY ButtWidth*0.5 TextHeight];
-HDRadioButton1 = uicontrol('Parent', HDmainf, ...
-   'Style','CheckBox', ...
-   'Units','pixels', ...
-   'Position',labelPos, ...
-   'Horiz','left', ...
-   'String','Radius:', ...
-   'Interruptible','off', ...
-   'BackgroundColor',[0.45 0.45 0.45], ...
-   'ForegroundColor','white',...
-   'Callback','menu3(''CallbackRadius'')',...
-   'Value',CircleOn);
-
-if (CircleOn==1) 
-   en='On'; 
-else 
-   en='Off'; 
-end;
-callbackStr='menu3(''RadiusChange'')';
-textPos=[ButtPosX+0.5*ButtWidth ButtPosY ButtWidth*0.35 TextHeight];
-stringVal=num2str(IncSnakeRadius);
-HDedit8 = uicontrol('Parent', HDmainf, ...
-   'BusyAction','Queue','Interruptible','off',...
-   'Style','edit', ...
-   'Units','pixel', ...
-   'Position',textPos, ...
-   'Units','normal', ...
-   'Horiz','right', ...
-   'Background','white', ...
-   'Foreground','black', ...
-   'String',stringVal,'Value',IncSnakeRadius, ...
-   'UserData',IncSnakeRadius,...
-   'Enable',en,...
-   'callback',callbackStr);
-
-% UICONTROL for Dots on the snake
-if (SnakeDotsON==0 )
-   value=0;
-else value=1; end;
-   
-ButtPosY = ButtPosY-ButtDist-ButtHeight;
-labelPos=[ButtPosX ButtPosY ButtWidth*0.5 TextHeight];
-HDRadioButton2 = uicontrol('Parent', HDmainf, ...
-   'Style','CheckBox', ...
-   'Units','pixels', ...
-   'Position',labelPos, ...
-   'Horiz','left', ...
-   'String','Dots', ...
-   'Interruptible','off', ...
-   'BackgroundColor',[0.45 0.45 0.45], ...
-   'ForegroundColor','white',...
-   'Callback','menu3(''CallbackDots'')',...
-   'Value',value);
-
-callbackStr='menu3(''DotsSizeChange'')';
-textPos=[ButtPosX+0.5*ButtWidth ButtPosY ButtWidth*0.35 TextHeight];
-stringVal=num2str(DotsSize);
-if (SnakeDotsON==1) 
-   en='On'; 
-else 
-   en='Off'; 
-end;
-
-HDedit9 = uicontrol('Parent', HDmainf, ...
-   'BusyAction','Queue','Interruptible','off',...
-   'Style','edit', ...
-   'Units','pixel', ...
-   'Position',textPos, ...
-   'Units','normal', ...
-   'Horiz','right', ...
-   'Background','white', ...
-   'Foreground','black', ...
-   'String',stringVal,'Value',DotsSize, ...
-   'UserData',DotsSize,...
-   'Enable',en,...
-   'callback',callbackStr);
+% 
+% % UICONTROL for Radius of snake
+% ButtWidth=MenuSizeX-2*ButtDist;
+% ButtPosY = ButtPosY-ButtDist-ButtHeight;
+% labelPos=[ButtPosX ButtPosY ButtWidth*0.5 TextHeight];
+% HDRadioButton1 = uicontrol('Parent', HDmainf, ...
+%    'Style','CheckBox', ...
+%    'Units','pixels', ...
+%    'Position',labelPos, ...
+%    'Horiz','left', ...
+%    'String','Radius:', ...
+%    'Interruptible','off', ...
+%    'BackgroundColor',[0.45 0.45 0.45], ...
+%    'ForegroundColor','white',...
+%    'Callback','menu3(''CallbackRadius'')',...
+%    'Value',CircleOn);
+% 
+% if (CircleOn==1) 
+%    en='On'; 
+% else 
+%    en='Off'; 
+% end;
+% callbackStr='menu3(''RadiusChange'')';
+% textPos=[ButtPosX+0.5*ButtWidth ButtPosY ButtWidth*0.35 TextHeight];
+% stringVal=num2str(IncSnakeRadius);
+% HDedit8 = uicontrol('Parent', HDmainf, ...
+%    'BusyAction','Queue','Interruptible','off',...
+%    'Style','edit', ...
+%    'Units','pixel', ...
+%    'Position',textPos, ...
+%    'Units','normal', ...
+%    'Horiz','right', ...
+%    'Background','white', ...
+%    'Foreground','black', ...
+%    'String',stringVal,'Value',IncSnakeRadius, ...
+%    'UserData',IncSnakeRadius,...
+%    'Enable',en,...
+%    'callback',callbackStr);
+% 
+% % UICONTROL for Dots on the snake
+% if (SnakeDotsON==0 )
+%    value=0;
+% else value=1; end;
+%    
+% ButtPosY = ButtPosY-ButtDist-ButtHeight;
+% labelPos=[ButtPosX ButtPosY ButtWidth*0.5 TextHeight];
+% HDRadioButton2 = uicontrol('Parent', HDmainf, ...
+%    'Style','CheckBox', ...
+%    'Units','pixels', ...
+%    'Position',labelPos, ...
+%    'Horiz','left', ...
+%    'String','Dots', ...
+%    'Interruptible','off', ...
+%    'BackgroundColor',[0.45 0.45 0.45], ...
+%    'ForegroundColor','white',...
+%    'Callback','menu3(''CallbackDots'')',...
+%    'Value',value);
+% 
+% callbackStr='menu3(''DotsSizeChange'')';
+% textPos=[ButtPosX+0.5*ButtWidth ButtPosY ButtWidth*0.35 TextHeight];
+% stringVal=num2str(DotsSize);
+% if (SnakeDotsON==1) 
+%    en='On'; 
+% else 
+%    en='Off'; 
+% end;
+% 
+% HDedit9 = uicontrol('Parent', HDmainf, ...
+%    'BusyAction','Queue','Interruptible','off',...
+%    'Style','edit', ...
+%    'Units','pixel', ...
+%    'Position',textPos, ...
+%    'Units','normal', ...
+%    'Horiz','right', ...
+%    'Background','white', ...
+%    'Foreground','black', ...
+%    'String',stringVal,'Value',DotsSize, ...
+%    'UserData',DotsSize,...
+%    'Enable',en,...
+%    'callback',callbackStr);
 
 % button Load Snake
 labelStr='Save S.';
@@ -445,7 +445,7 @@ HDButton6=uicontrol('Parent', HDmainf, ...
    'Position',[ButtPosX ButtPosY ButtWidth ButtHeight], ...
    'String',labelStr, ...
    'Enable','on', ...
-   'Callback','menu3(''LoadSnake'')');
+   'Callback','menu3(''LoadSnake'', [], [])');
 
 %=========================================================
 % HELP
@@ -473,7 +473,8 @@ HDButton6=uicontrol('Parent', HDmainf, ...
 
 
 %%%% define local menu objects, that should be deletet 
-VectorOfLocalMenuHD=[HDButton1 HDButton2 HDButton3 HDButton4 HDedit1 HDtext1 HDedit2 HDtext2 HDMenuAxes HDedit3 HDtext3 HDedit4 HDtext4 HDedit5 HDtext5 HDedit6 HDtext6 HDedit7 HDtext7 HDedit8 HDRadioButton1 HDRadioButton2 HDedit9 HDButton5 HDButton6];
+% VectorOfLocalMenuHD=[HDButton1 HDButton2 HDButton3 HDButton4 HDedit1 HDtext1 HDedit2 HDtext2 HDMenuAxes HDedit3 HDtext3 HDedit4 HDtext4 HDedit5 HDtext5 HDedit6 HDtext6 HDedit7 HDtext7 HDedit8 HDRadioButton1 HDRadioButton2 HDedit9 HDButton5 HDButton6];
+VectorOfLocalMenuHD=[HDButton1 HDButton2 HDButton3 HDButton4 HDedit1 HDtext1 HDedit2 HDtext2 HDMenuAxes HDedit3 HDtext3 HDedit4 HDtext4 HDedit5 HDtext5 HDedit6 HDtext6 HDedit7 HDtext7 HDButton5 HDButton6];
 pause(0.1);
 
 return
@@ -504,28 +505,28 @@ set(HDSnakeLine,'XData',XSnake,'YData',YSnake,'Color','Red');
 return
 
 
-% callfunction for snake radius change
-function RadiusChange()
-global IncSnakeRadius;
-global XSnake YSnake IncSnakeRadius Image1 HDSnakeLine;
-
-
-v = get(gcbo,'Userdata');
-s = get(gcbo,'String');
-vv = eval(s,num2str(v));
-if vv(1) > 1 | vv(1) < 0 | s~=num2str(vv)
-   vv = v; 
-   set(gcbo, 'String', num2str(v))
-   return
-end
-set(gcbo,'Userdata',vv,'String',num2str(vv))
-IncSnakeRadius=vv;
-
-t = 0:0.05:6.28;
-XSnake = (size(Image1,1)/2 +  IncSnakeRadius/2*size(Image1,1)*cos(t))';
-YSnake = (size(Image1,2)/2 +  IncSnakeRadius/2*size(Image1,2)*sin(t))';
-set(HDSnakeLine,'XData',XSnake,'YData',YSnake,'Color','Red');
-return
+% % callfunction for snake radius change
+% function RadiusChange()
+% global IncSnakeRadius;
+% global XSnake YSnake IncSnakeRadius Image1 HDSnakeLine;
+% 
+% 
+% v = get(gcbo,'Userdata');
+% s = get(gcbo,'String');
+% vv = eval(s,num2str(v));
+% if vv(1) > 1 | vv(1) < 0 | s~=num2str(vv)
+%    vv = v; 
+%    set(gcbo, 'String', num2str(v))
+%    return
+% end
+% set(gcbo,'Userdata',vv,'String',num2str(vv))
+% IncSnakeRadius=vv;
+% 
+% t = 0:0.05:6.28;
+% XSnake = (size(Image1,1)/2 +  IncSnakeRadius/2*size(Image1,1)*cos(t))';
+% YSnake = (size(Image1,2)/2 +  IncSnakeRadius/2*size(Image1,2)*sin(t))';
+% set(HDSnakeLine,'XData',XSnake,'YData',YSnake,'Color','Red');
+% return
 
 
 % callfunction for Manual Snake
@@ -664,58 +665,58 @@ end
 set(HDManualSnakeLine,'XData',XSnakeManual,'YData',YSnakeManual,'EraseMode','none','Color','Red');
 return
 
+% 
+% function CallbackRadius()
+% global CircleOn;						% inicalization snake will be circle
+% global HDedit8;
+% 
+% if get(gcbo,'Value')==1 
+%     CircleOn=1;
+%     set(HDedit8,'Enable','On');
+%  else
+%     CircleOn=0;
+%     set(HDedit8,'Enable','Off');
+%  end;   
+% return
 
-function CallbackRadius()
-global CircleOn;						% inicalization snake will be circle
-global HDedit8;
 
-if get(gcbo,'Value')==1 
-    CircleOn=1;
-    set(HDedit8,'Enable','On');
- else
-    CircleOn=0;
-    set(HDedit8,'Enable','Off');
- end;   
-return
+% % callfunction for snake radius change
+% function CallbackDots()
+% global HDSnakeLine;
+% global SnakeDotsON DotsSize;				      % 1 if snake dots should be displeyed
+% global HDedit9;
+% 
+% if get(gcbo,'Value')==1
+%    SnakeDotsON=1;
+% else
+%    SnakeDotsON=0;
+% end;
+% 
+% if SnakeDotsON==1 
+%    set(HDSnakeLine,'Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
+%    set(HDedit9,'Enable','On');
+% else
+%    set(HDSnakeLine,'Marker','None');
+%    set(HDedit9,'Enable','Off');
+% end;
+% return
 
-
-% callfunction for snake radius change
-function CallbackDots()
-global HDSnakeLine;
-global SnakeDotsON DotsSize;				      % 1 if snake dots should be displeyed
-global HDedit9;
-
-if get(gcbo,'Value')==1
-   SnakeDotsON=1;
-else
-   SnakeDotsON=0;
-end;
-
-if SnakeDotsON==1 
-   set(HDSnakeLine,'Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
-   set(HDedit9,'Enable','On');
-else
-   set(HDSnakeLine,'Marker','None');
-   set(HDedit9,'Enable','Off');
-end;
-return
-
-% callback function for dots change size
-function DotsSizeChange()
-global DotsSize HDSnakeLine;
-
-v = get(gcbo,'Userdata')
-s = get(gcbo,'String')
-vv = eval(s,num2str(v))
-if vv(1) > 30 | vv(1) <= 0 | s~=num2str(vv)| round(vv(1))~=vv(1)
-   vv = v; 
-   set(gcbo, 'String', num2str(v))
-   return
-end
-set(gcbo,'Userdata',vv,'String',num2str(vv))
-DotsSize=vv;
-set(HDSnakeLine,'Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
-return
+% % callback function for dots change size
+% function DotsSizeChange()
+% global DotsSize HDSnakeLine;
+% 
+% v = get(gcbo,'Userdata')
+% s = get(gcbo,'String')
+% vv = eval(s,num2str(v))
+% if vv(1) > 30 | vv(1) <= 0 | s~=num2str(vv)| round(vv(1))~=vv(1)
+%    vv = v; 
+%    set(gcbo, 'String', num2str(v))
+%    return
+% end
+% set(gcbo,'Userdata',vv,'String',num2str(vv))
+% DotsSize=vv;
+% set(HDSnakeLine,'Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
+% return
 
 %%% Callback function for save snake parameters 
 function SaveSnake()
@@ -742,7 +743,7 @@ global DotsSize;
 return
 
 %%% Callback function for load snake parameters 
-function LoadSnake()
+function LoadSnake(snakePath, snakeFile)
 global SnakeFileName SnakePathName;  % name of the snake parameters file
 
 global alpha beta gamma kappa dmin dmax;		% parameters for the snake
@@ -751,50 +752,55 @@ global NoSnakeIterations;		   % number of Snake iterations
 global SnakeDotsON;				   % 1 if snake dots should be displeyed
 global IncSnakeRadius;				% inicializaton snake radius
 global XSnakeInc YSnakeInc;   	% incicialization conture of the snake
-global DotsSize;						
+global DotsSize;
 global HDedit1 HDedit2 HDedit3 HDedit4 HDedit5 HDedit6 HDedit7 HDedit8 HDedit9 ; % handels of snake edit uicontrol
 global CircleOn;						% inicalization snake will be circle
 global HDRadioButton1 HDRadioButton2;
 
-	[FileNameT PathNameT]=uigetfile(strcat(SnakePathName,'\*.mat'),'Load snake parameters');
-   if FileNameT~=0 
-      disp(' ');
-      disp(strcat(' Load	',FileNameT));
-      disp(' ');
+if size(snakePath) == [0 0]
+    [FileNameT PathNameT]=uigetfile(strcat(SnakePathName,'\*.mat'),'Load snake parameters');
+else
+    FileNameT = snakeFile; PathNameT = snakePath;
+end
 
-		load(strcat(PathNameT,FileNameT));
+if FileNameT~=0
+    disp(' ');
+    disp(strcat(' Load	',FileNameT));
+    disp(' ');
 
-      SnakePathName=PathNameT;
-      SnakeFileName=FileNameT;
-      
-      XSnakeInc=XSnake;
-      YSnakeInc=YSnake;
-      
-      global HDSnakeLine;
-      set(HDSnakeLine,'XData',[XSnake; XSnake(1)],'YData',[YSnake; YSnake(1)]);
-      if SnakeDotsON==1 
-		   set(HDSnakeLine,'Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
-         set(HDedit9,'Enable','On');
-         set(HDRadioButton2,'Value',1);
-		else
-   		set(HDSnakeLine,'Marker','None');
-         set(HDedit9,'Enable','Off');
-         set(HDRadioButton2,'Value',0);
-		end;
-      
-      % reset the values in the menu
-      set(HDedit1,'String',num2str(alpha),'Value',alpha);
-      set(HDedit2,'String',num2str(beta),'Value',beta);
-      set(HDedit3,'String',num2str(gamma),'Value',gamma);
-      set(HDedit4,'String',num2str(kappa),'Value',kappa);
-      set(HDedit5,'String',num2str(dmin),'Value',dmin);
-      set(HDedit6,'String',num2str(dmax),'Value',dmax);
-      set(HDedit7,'String',num2str(NoSnakeIterations),'Value',NoSnakeIterations);
-		set(HDedit8,'String',num2str(IncSnakeRadius),'Value',IncSnakeRadius);
-		set(HDedit9,'String',num2str(DotsSize),'Value',DotsSize);
-			
-      set(HDRadioButton1,'Value',0);
-      set(HDedit8,'Enable','Off');
-      CircleOn=0;
-   end
+    load(strcat(PathNameT,FileNameT));
+
+    SnakePathName=PathNameT;
+    SnakeFileName=FileNameT;
+
+    XSnakeInc=XSnake;
+    YSnakeInc=YSnake;
+
+    global HDSnakeLine;
+    set(HDSnakeLine,'XData',[XSnake; XSnake(1)],'YData',[YSnake; YSnake(1)]);
+    %       if SnakeDotsON==1
+    % 		   set(HDSnakeLine,'Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
+    %          set(HDedit9,'Enable','On');
+    %          set(HDRadioButton2,'Value',1);
+    % 		else
+    set(HDSnakeLine,'Marker','None');
+    %          set(HDedit9,'Enable','Off');
+    %          set(HDRadioButton2,'Value',0);
+    % 		end;
+
+    % reset the values in the menu
+    set(HDedit1,'String',num2str(alpha),'Value',alpha);
+    set(HDedit2,'String',num2str(beta),'Value',beta);
+    set(HDedit3,'String',num2str(gamma),'Value',gamma);
+    set(HDedit4,'String',num2str(kappa),'Value',kappa);
+    set(HDedit5,'String',num2str(dmin),'Value',dmin);
+    set(HDedit6,'String',num2str(dmax),'Value',dmax);
+    set(HDedit7,'String',num2str(NoSnakeIterations),'Value',NoSnakeIterations);
+    % 		set(HDedit8,'String',num2str(IncSnakeRadius),'Value',IncSnakeRadius);
+    % 		set(HDedit9,'String',num2str(DotsSize),'Value',DotsSize);
+
+    set(HDRadioButton1,'Value',0);
+    set(HDedit8,'Enable','Off');
+    CircleOn=0;
+end
 return
