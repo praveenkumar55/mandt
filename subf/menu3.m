@@ -491,9 +491,10 @@ global XSnakeInc YSnakeInc;   	% incicialization conture of the snake
 global CircleOn;
 
 if CircleOn==1
-    t = 0:0.05:6.28;
-    XSnake = (size(Image1,2)/2 +  IncSnakeRadius/2*size(Image1,2)*cos(t))';
-    YSnake = (size(Image1,1)/2 +  IncSnakeRadius/2*size(Image1,1)*sin(t))';
+%     t = 0:0.05:6.28;
+%     XSnake = (size(Image1,2)/2 +  IncSnakeRadius/2*size(Image1,2)*cos(t))';
+%     YSnake = (size(Image1,1)/2 +  IncSnakeRadius/2*size(Image1,1)*sin(t))';
+    load('mask.mat');
 else
     XSnake=[XSnakeInc; XSnakeInc(1)];
     YSnake=[YSnakeInc; YSnakeInc(1)];

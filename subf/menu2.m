@@ -201,7 +201,7 @@ HDedit2 = uicontrol('Parent', HDmainf, ...
 % Radio Button 3 			- Normalized
 ButtPosY = ButtPosY-2*ButtDist-ButtHeight;
 labelPos=[ButtPosX ButtPosY ButtWidth TextHeight];
-labelStr='Normailze';
+labelStr='Add Mask';
 callbackStr='RadioUPDATE';
 
 btnPos=[ButtPosX ButtPosY ButtWidth ButtHeight];

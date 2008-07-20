@@ -226,6 +226,12 @@ else
       I=X(:,:,1);
    end
 end
+
+% check whether it is 48*116
+if size(I) ~= [116 48]
+    warndlg('The pic must have size 48*116','Warning');
+    return
+end
       
 % get proposal file name for snake parameters
 SnakePathName=PathName;
