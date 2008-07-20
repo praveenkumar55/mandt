@@ -95,11 +95,11 @@ HDline3=line('Parent', HDvectorFPic,'XData',XS,'YData',YS,'Color','Red');
 
 HDSnakeLine=[HDline1 HDline2 HDline3];
 SnakeON=1;
-if SnakeDotsON==1 
-   set(HDSnakeLine,'Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
-else
-   set(HDSnakeLine,'Marker','None');
-end;
+% if SnakeDotsON==1 
+%    set(HDSnakeLine,'Marker','.','MarkerEdgeColor','Green','MarkerFaceColor','Blue','MarkerSize',DotsSize);
+% else
+%    set(HDSnakeLine,'Marker','None');
+% end;
 
                
 HD=get(HDvectorFPic,'Children');
