@@ -310,7 +310,7 @@ t = 0:0.05:6.28;
 % YSnake = (size(Image1,2)/2 +  IncSnakeRadius/2*size(Image1,2)*sin(t))';
 % XSnake = (size(Image1,2)/2 +  IncSnakeRadius/2*size(Image1,2)*cos(t))';
 % YSnake = (size(Image1,1)/2 +  IncSnakeRadius/2*size(Image1,1)*sin(t))';
-load('./mask.mat');
+load('./snake.mat');
 XSnakeInc=XSnake; YSnakeInc=YSnake;
 SchangeInFieldType=1;
 return   
