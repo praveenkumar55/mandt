@@ -107,7 +107,7 @@ hold off;
 % [picSizey picSizex] = size(Image2)
 % set(HDvectorFPic, 'Position', [fpos(1)+fpos(3), fpos(2), fpos(3), fpos(4)]);
 set(HDmainf,'CurrentAxes',HDvectorFPic);
-hold on
+hold on;
 HDline3=plot(XS,YS,'red','LineWidth',3);
 hold off;
 

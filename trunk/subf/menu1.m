@@ -223,7 +223,11 @@ if (suffix=='pgm')+(suffix=='raw')
 else
    if (suffix=='jpg')+(suffix=='bmp')+(suffix=='hdf')+(suffix=='pcx')+(suffix=='tif')
       [X,MAP] = IMREAD(strcat(PathName,FileName));
-      I=X(:,:,1);
+      if size(X) == 3
+          I=X(:,:,1) + X(:,:,2) + X(:,:,3);
+      else
+          I=X(:,:,1);
+      end
    end
 end
 
