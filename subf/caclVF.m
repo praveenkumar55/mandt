@@ -56,29 +56,32 @@ end
 mag = sqrt(u.*u+v.*v);
 px = u./(mag+1e-10); py = v./(mag+1e-10);
 
-%HDvectorFPic=subplot(223);
+set(HDvectorFPic,'Units', 'pixels','Position',[adgeD adgeD xsize ysize],...
+   					'Units', 'normal',...
+                  'XLim',[0 size(Image2,1)],...
+                  'YLim',[0 size(Image2,2)],...
+                  'XTickMode','manual','XTick',[],...
+                  'YTickMode','manual','YTick',[],...
+                  'Units', 'pixels');
+
+% HDvectorFPic=subplot(223);
 %  global HDmainf;
 set(HDmainf,'CurrentAxes',HDvectorFPic);
-xSpace=(1:3:size(Image2,2));
-ySpace=(1:3:size(Image2,1));
-qx=interp2(px,xSpace, ySpace');
-qy=interp2(py,xSpace, ySpace');
-
+[ysImage2 xsImage2] = size(Image2);
+[xSpace ySpace] = meshgrid(4:3*xsImage2/xsize:(xsImage2-3), 4:3*ysImage2/ysize:(ysImage2-3));
+qx = interp2(px, xSpace, ySpace);
+qy = interp2(py, xSpace, ySpace);
+% xSpace=(1:size(Image2,2)/32:size(Image2,2));
+% ySpace=(1:size(Image2,1)/32:size(Image2,1));
+% qx=interp2(px,xSpace, ySpace');
+% qy=interp2(py,xSpace, ySpace');
 quiver(xSpace,ySpace,qx,qy);
 axis('ij');
 if VectorFieldButt(1)==1
-    title('Standard potencial field');
+    title('Standard field');
 else
     title('GVF');
 end
-
-set(HDvectorFPic,'Units', 'pixels','Position',[adgeD+180 adgeD ysize/2.6 xsize/2.6],...
-    'Units', 'normal',...
-    'XLim',[0 size(Image2,2)],...
-    'YLim',[0 size(Image2,1)],...
-    'XTickMode','manual','XTick',[],...
-    'YTickMode','manual','YTick',[],...
-    'Units', 'pixels');
 
 %%%%% result
 XS = [XSnake; XSnake(1)];
