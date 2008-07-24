@@ -21,9 +21,9 @@ NoSnakeIterations = 100;
 % algorithm
 useGVF = 1;
 
-testDir = 'D:\jimmy\program\good_set\';
+testDir = 'D:\jimmy\program\bad_set\';
 resultDir = 'D:\jimmy\program\trainset\';
-outputDir = 'D:\jimmy\program\good_set_result1\';
+outputDir = 'D:\jimmy\program\bad_set_result\';
 p = path;
 path(p, '../snake;');
 
