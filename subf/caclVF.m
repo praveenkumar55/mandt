@@ -1,4 +1,4 @@
-function caclVF();
+function caclVF()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% calculate Vector field
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -14,7 +14,6 @@ global alpha beta gamma kappa dmin dmax;		% parameters for the snake
 global px py u v;											% forse filed
 global SchangeInFieldType;
 global XSnake YSnake;				% conture of the snake
-global VectorFieldButt;
 
 global xsize ysize;					%size of the picture
 
@@ -71,10 +70,6 @@ set(HDmainf,'CurrentAxes',HDvectorFPic);
 [xSpace ySpace] = meshgrid(4:3*xsImage2/xsize:(xsImage2-3), 4:3*ysImage2/ysize:(ysImage2-3));
 qx = interp2(px, xSpace, ySpace);
 qy = interp2(py, xSpace, ySpace);
-% xSpace=(1:size(Image2,2)/32:size(Image2,2));
-% ySpace=(1:size(Image2,1)/32:size(Image2,1));
-% qx=interp2(px,xSpace, ySpace');
-% qy=interp2(py,xSpace, ySpace');
 quiver(xSpace,ySpace,qx,qy);
 axis('ij');
 if VectorFieldButt(1)==1
