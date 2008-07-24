@@ -2,14 +2,12 @@ function diff = calDiff(Img, snakeX, snakeY)
 %CALDIFF calculate the difference between the real edge and detected edge
 %   Detailed explanation goes here
 [sy sx] = size(Img);
-Img
 edge = zeros(sy, sx);
 edge(1:sy-1, 1:sx-1) = abs(Img(1:sy-1, 1:sx-1) - Img(1:sy-1, 2:sx)) ...
     + abs(Img(1:sy-1, 1:sx-1) - Img(2:sy, 1:sx-1));
 snakeX = ceil(snakeX);
 snakeY = ceil(snakeY);
 sum = 0;
-edge
 for i=1:size(snakeX)
     radius = min(sy, sx);
     result = 0;

@@ -21,5 +21,37 @@ function newImg = addSnake(img, snakeX, snakeY)
         newImg(y, x, 1) = 255;
         newImg(y, x, 2) = 0;
         newImg(y, x, 3) = 0;
+        
+        xx = x + 1;
+        yy = y;
+        if (xx > 0) && (xx <= sx ) && (yy > 0) && (yy <= sy)
+            newImg(yy, xx, 1) = 255;
+            newImg(yy, xx, 2) = 0;
+            newImg(yy, xx, 3) = 0;
+        end
+        
+        xx = x - 1;
+        yy = y;
+        if (xx > 0) && (xx <= sx ) && (yy > 0) && (yy <= sy)
+            newImg(yy, xx, 1) = 255;
+            newImg(yy, xx, 2) = 0;
+            newImg(yy, xx, 3) = 0;
+        end
+        
+        xx = x;
+        yy = y + 1;
+        if (xx > 0) && (xx <= sx ) && (yy > 0) && (yy <= sy)
+            newImg(yy, xx, 1) = 255;
+            newImg(yy, xx, 2) = 0;
+            newImg(yy, xx, 3) = 0;
+        end
+        
+        xx = x;
+        yy = y - 1;
+        if (xx > 0) && (xx <= sx ) && (yy > 0) && (yy <= sy)
+            newImg(yy, xx, 1) = 255;
+            newImg(yy, xx, 2) = 0;
+            newImg(yy, xx, 3) = 0;
+        end
     end
 end

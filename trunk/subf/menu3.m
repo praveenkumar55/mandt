@@ -546,8 +546,8 @@ global CircleOn;
 global HDButton1 HDButton2 HDButton4;
 
 set([HDButton1 HDButton2 HDButton4],'Enable','Off');
-set(HDedit8,'Enable','Off');
-set(HDRadioButton1,'Value',0,'Enable','Off');
+% set(HDedit8,'Enable','Off');
+% set(HDRadioButton1,'Value',0,'Enable','Off');
 CircleOn=0;
 
 set(gcbo,'String','End M.',...
@@ -590,7 +590,7 @@ set([HDButton1 HDButton2 HDButton4],'Enable','On');
 
 set(gcbo,'String','Manual',...
    'CallBack','menu3(''ManualSnakeON'')');
-set(HDRadioButton1,'Enable','On');
+% set(HDRadioButton1,'Enable','On');
 
 if ~isempty(HDManualSnakeLine) 
    delete(HDManualSnakeLine);
