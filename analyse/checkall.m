@@ -19,11 +19,11 @@ NoGVFIterations = 80;
 NoSnakeIterations = 100;
 
 % algorithm
-useGVF = 0;
+useGVF = 1;
 
-testDir = 'D:\jimmy\program\bad_set\';
+testDir = 'D:\jimmy\program\good_set\';
 resultDir = 'D:\jimmy\program\trainset\';
-outputDir = 'D:\jimmy\program\outputset\';
+outputDir = 'D:\jimmy\program\good_set_result1\';
 p = path;
 path(p, '../snake;');
 
@@ -42,11 +42,6 @@ for i=1:sizeFiles(1)
     if (sizeImg(1) ~= height) || (sizeImg(2) ~= width)
         disp('Wrong Size!');
         continue;
-    end
-    
-    % by jimmy
-    if files(i).name == 'per00018.bmp'
-        disp('hehe');
     end
 
     % prepossess

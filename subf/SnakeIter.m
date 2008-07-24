@@ -55,6 +55,8 @@ end;
 set(HDmainf,'CurrentAxes',HDorigPic);
 hold on
 
+% pause(5);
+
 XS=[x; x(1)];
 YS=[y; y(1)];
 HD=line(XS,YS);
@@ -80,10 +82,12 @@ for i=1:ceil(NoSnakeIterations/5),
     set(HD,'Color','Red','Marker','None');
 
     pause(0.1);
+% pause(0.5);
 end
 XSnake=x; YSnake=y;
 title(['Iter = ' num2str(NoSnakeIterations)])
 pause(0.1);
+% pause(0.5);
 hold off;
 
 imdisp(Image1); title('Original image');
