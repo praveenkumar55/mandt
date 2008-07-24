@@ -245,14 +245,14 @@ for i=1:size(FileName,2)
       n=FileName(1:i);
    else
       break;
-   end;
-end;
+   end
+end
 SnakeFileName=strcat(n,'.mat');
 
-I=double(I);
-maxvalue=max(max(I)');
-f = I/maxvalue; 
-Image1=f;
+dI=double(I);
+maxvalue=max(max(dI)');
+f = dI/maxvalue; 
+Image1=I;
 
 [xsize ysize]=size(I);
 

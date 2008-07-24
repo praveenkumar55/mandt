@@ -14,7 +14,7 @@ global alpha beta gamma kappa dmin dmax;		% parameters for the snake
 global px py u v;											% forse filed
 global SchangeInFieldType;
 global XSnake YSnake;				% conture of the snake
-
+global VectorFieldButt;
 
 global xsize ysize;					%size of the picture
 
@@ -30,18 +30,25 @@ global HDSnakeLine;					%vector of Handles of Snake lines on the picture
 global SnakeON;						%indicate if snake is visible
 
 if SchangeInFieldType==1
-%     f = addMask(f);
-    f = addmask(Image2, direI);
+    if VectorFieldButt(3) == 1
+        f = addmask(Image2, direI);
+    else
+        f = double(Image2);
+    end
+%     f = Image2;
     set(HDmainf,'CurrentAxes',HDbluredPic); imdisp(f); title('Blured image');
     fmin  = min(f(:));
     fmax  = max(f(:));
-    f = 2*(Image2-fmin)/(fmax-fmin);  % Normalize f to the range [0,1]
+%     f = 2*(Image2-fmin)/(fmax-fmin);  % Normalize f to the range [0,1]
+    f = 2*(f-fmin)/(fmax-fmin);  % Normalize f to the range [0,1]
     f = BoundMirrorExpand(f);  % Take care of boundary condition
-    [u,v] = gradient(f);     % Calculate the gradient of the edge map
+   
     if VectorFieldButt(1) ~= 1
         % Compute the GVF of the edge Image2
         disp(' Compute GVF ...');
-        [u,v] = GVF(u, v, mu, NoGVFIterations);
+        [u,v] = GVF(f, mu, NoGVFIterations);
+    else
+        [u,v] = gradient(f);     % Calculate the gradient of the edge map
     end
     SchangeInFieldType=0;
 end
@@ -76,7 +83,7 @@ set(HDvectorFPic,'Units', 'pixels','Position',[adgeD adgeD ysize/3 xsize/3],...
 %%%%% result
 XS = [XSnake; XSnake(1)];
 YS = [YSnake; YSnake(1)];
-
+pause;
 HDline1=line('Parent', HDorigPic,'XData',XS,'YData',YS,'Color','Red','LineWidth',3);
 HDline2=line('Parent', HDbluredPic,'XData',XS,'YData',YS,'Color','Red','LineWidth',3);
 HDline3=line('Parent', HDvectorFPic,'XData',XS,'YData',YS,'Color','Red','LineWidth',3);

@@ -12,7 +12,6 @@ function [x,y] = snakedeform(x,y,alpha,beta,gamma,kappa,fx,fy,ITER)
 %      Copyright (c) 1995-97 by Chenyang Xu and Jerry L. Prince
 %      Image Analysis and Communications Lab, Johns Hopkins University
 
-
 % generates the parameters for snake
 
 N = length(x);
