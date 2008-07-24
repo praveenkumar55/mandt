@@ -1,4 +1,4 @@
-function [u,v] = GVF(fx, fy, mu, ITER)
+function [u,v] = GVF(f, mu, ITER)
 %GVF Compute gradient vector flow.
 %   [u,v] = GVF(f, mu, ITER) computes the
 %   GVF of an edge map f.  mu is the GVF regularization coefficient
@@ -16,15 +16,19 @@ function [u,v] = GVF(fx, fy, mu, ITER)
 %   normalized to the range [0,1] before the function is called. 
 %   In this version, "f" is normalized inside the function to avoid 
 %   potential error of inputing an unnormalized "f".
+
+[m,n] = size(f);
+fmin  = min(f(:));
+fmax  = max(f(:));
+f = (f-fmin)/(fmax-fmin);  % Normalize f to the range [0,1]
+
+f = BoundMirrorExpand(f);  % Take care of boundary condition
+[fx,fy] = gradient(f);     % Calculate the gradient of the edge map
 u = fx; v = fy;            % Initialize GVF to the gradient
 SqrMagf = fx.*fx + fy.*fy; % Squared magnitude of the gradient field
 
-% imdisp(SqrMagf);
-% by jimmy
-% imshow(SqrMagf);
-
 % Iteratively solve for the GVF u,v
-for i=1:ITER
+for i=1:ITER,
   u = BoundMirrorEnsure(u);
   v = BoundMirrorEnsure(v);
   u = u + mu*4*del2(u) - SqrMagf.*(u-fx);
@@ -38,3 +42,4 @@ fprintf(1, '\n');
 
 u = BoundMirrorShrink(u);
 v = BoundMirrorShrink(v);
+

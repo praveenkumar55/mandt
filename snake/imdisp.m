@@ -3,6 +3,7 @@ function imdisp(I)
 
 x = (0:255)./255;
 grey = [x;x;x]';
+I = double(I);
 minI = min(min(I));
 maxI = max(max(I));
 I = uint8((I-minI)/(maxI-minI)*255);
