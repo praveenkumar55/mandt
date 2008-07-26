@@ -40,7 +40,12 @@ A = A + diag(e(1:N-2),2) + diag(e(N-1:N),-(N-2));
 
 invAI = inv(A + gamma * diag(ones(1,N)));
 
+[sy sx] = size(fx);
 for count = 1:ITER,
+   x(x<1) = 1;
+   x(x>sx) = sx;
+   y(y<1) = 1;
+   y(y>sy) = sy;
    vfx = interp2(fx,x,y,'*linear');
    vfy = interp2(fy,x,y,'*linear');
    
