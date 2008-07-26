@@ -15,8 +15,8 @@ dmin = 0.5;
 dmax = 2;
 sigma = 1;
 mu = 0.1;
-NoGVFIterations = 80;
-NoSnakeIterations = 100;
+NoGVFIterations = 40;
+NoSnakeIterations = 80;
 
 % algorithm
 useGVF = 1;
@@ -29,6 +29,7 @@ path(p, '../snake;');
 
 files = dir(testDir);
 sizeFiles = size(files);
+diffsum = 0;
 for i=1:sizeFiles(1)
 
     % read in file
@@ -71,14 +72,6 @@ for i=1:sizeFiles(1)
     end
     mag = sqrt(u.*u+v.*v);
     px = u./(mag+1e-10); py = v./(mag+1e-10);
-%     u = 1000*u;
-%     v = 1000*v;
-%     xSpace=(1:3:size(img,2));
-%     ySpace=(1:3:size(img,1));
-%     qx=interp2(px,xSpace, ySpace');
-%     qy=interp2(py,xSpace, ySpace');
-%     quiver(xSpace,ySpace,qx,qy);
-%     pause;
 
     % set initial snake: XSnake and YSnake
     load('../snake.mat');
@@ -87,22 +80,20 @@ for i=1:sizeFiles(1)
     [x,y] = snakeinterp(XSnake,YSnake,dmax,dmin);
     for j = 1:NoSnakeIterations/5
         [x,y] = snakedeform(x,y,alpha,beta,gamma,kappa,px,py,5);
-%         [x,y] = snakedeform(x,y,alpha,beta,gamma,kappa,u,v,5);
         [x,y] = snakeinterp(x,y,dmax,dmin);
     end
 
     % check the result
-    diffsum = 0;
     count = 0;
-    if exist(strcat(resultDir, files(i).name), 'file') == 2
-        resultImg = imread(strcat(resultDir, files(i).name));
-        diff = calDiff(resultImg, x, y);
-        diffsum = diffsum + diff;
-        count = count + 1;
-        fprintf('Diff of %s : %d\n', files(i).name, diff);
-    else
-        disp(strcat('No such file: ', files(i).name));
-    end
+%     if exist(strcat(resultDir, files(i).name), 'file') == 2
+%         resultImg = imread(strcat(resultDir, files(i).name));
+%         diff = calDiff(resultImg, x, y);
+%         diffsum = diffsum + diff;
+%         count = count + 1;
+%         fprintf('Diff of %s : %d\n', files(i).name, diff);
+%     else
+%         disp(strcat('No such file: ', files(i).name));
+%     end
     
     % output
     img = addSnake(img, x, y);
