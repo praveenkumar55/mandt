@@ -34,7 +34,6 @@ if SchangeInFieldType==1
     else
         f = double(Image2);
     end
-%     f = Image2;
     set(HDmainf,'CurrentAxes',HDbluredPic); imdisp(f); title('Blured image');
     fmin  = min(f(:));
     fmax  = max(f(:));
