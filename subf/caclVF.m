@@ -34,13 +34,24 @@ if SchangeInFieldType==1
     else
         f = double(Image2);
     end
-    set(HDmainf,'CurrentAxes',HDbluredPic); imdisp(f); title('Blured image');
+    
     fmin  = min(f(:));
     fmax  = max(f(:));
 %     f = 2*(Image2-fmin)/(fmax-fmin);  % Normalize f to the range [0,1]
-    f = 2*(f-fmin)/(fmax-fmin);  % Normalize f to the range [0,1]
+    f = (f-fmin)/(fmax-fmin);  % Normalize f to the range [0,1]
     f = BoundMirrorExpand(f);  % Take care of boundary condition
-   
+%     f = 1 - (1-f).^2;
+    set(HDmainf,'CurrentAxes',HDbluredPic); imdisp(f); title('Blured image');
+% Show why add direction mask is not a good idea
+%     [sy sx] = size(f);
+%     for i=4:4:sy
+%         for j=4:4:sx
+%             fprintf('%d\t', uint16(f(i,j)*256));
+%         end
+%         fprintf('\n');
+%     end
+%     figure; imdisp(f);
+%     pause;
     if VectorFieldButt(1) ~= 1
         % Compute the GVF of the edge Image2
         disp(' Compute GVF ...');
