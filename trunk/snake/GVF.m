@@ -17,6 +17,10 @@ function [u,v] = GVF(f, mu, ITER)
 %   In this version, "f" is normalized inside the function to avoid 
 %   potential error of inputing an unnormalized "f".
 
+%   type: 1 - mu为同一个值
+%         2 - mu在头部的地方要适当变
+type = 2;
+
 [m,n] = size(f);
 fmin  = min(f(:));
 fmax  = max(f(:));
@@ -31,8 +35,16 @@ SqrMagf = fx.*fx + fy.*fy; % Squared magnitude of the gradient field
 for i=1:ITER,
   u = BoundMirrorEnsure(u);
   v = BoundMirrorEnsure(v);
-  u = u + mu*4*del2(u) - SqrMagf.*(u-fx);
-  v = v + mu*4*del2(v) - SqrMagf.*(v-fy);
+  % by jimmy
+  if type == 2  
+      muMatrix = mu * ones(size(u));
+      muMatrix(14:35, 10:25) = mu/5;
+      u = u + 4*muMatrix.*del2(u) - SqrMagf.*(u-fx);
+      v = v + 4*muMatrix.*del2(v) - SqrMagf.*(v-fy);
+  else
+      u = u + mu*4*del2(u) - SqrMagf.*(u-fx);
+      v = v + mu*4*del2(v) - SqrMagf.*(v-fy);
+  end
   fprintf(1, '%3d', i);
   if (rem(i,20) == 0)
      fprintf(1, '\n');
